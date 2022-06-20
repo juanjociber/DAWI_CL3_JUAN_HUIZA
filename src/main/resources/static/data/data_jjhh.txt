@@ -1,0 +1,35 @@
+/*CREANDO BASE DE DATOS*/
+create database data_juanhuiza;
+
+/*ACTIVANDO*/
+use data_juanhuiza;
+
+/*TABLA CARRERAS*/
+Create table tb_carreras(
+cod_carrera int not null primary key,
+des_carrera	varchar(80)
+);
+
+/*TABLA RESERVA*/
+Create table tb_reservas(
+cod_reserva		int not null primary key,
+nom_reserva		varchar(40),
+ape_reserva 	varchar(40),
+cod_carrera		int references tb_carreras(cod_carrera),
+fecha_reserva	date
+);
+
+/*REGISTROS DE CARRERAS*/
+insert into tb_carreras values(1,'Ingeniería Informática');
+insert into tb_carreras values(2,'Ingeniería de Telecomunicaciones');
+insert into tb_carreras values(3,'Ingeniería de Software');
+
+/*REGISTRO DE RESERVAS*/
+insert into tb_reservas value(1,'Juan','Huiza',3,'2022-03-01');
+insert into tb_reservas value(2,'André','Huiza',1,'2022-03-10');
+insert into tb_reservas value(3,'Liz','Flores',2,'2022-04-10');
+insert into tb_reservas value(4,'Vania','Huiza',1,'2022-03-15');
+insert into tb_reservas value(5,'Ricardo','Huiza',3,'2022-03-20');
+
+select * from tb_carreras;
+select * from tb_reservas

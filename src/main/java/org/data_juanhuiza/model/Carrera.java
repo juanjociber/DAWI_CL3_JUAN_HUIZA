@@ -11,6 +11,7 @@ import lombok.Data;
 public class Carrera {
 	@Id
 	private int cod_carrera;
+	
 	private String des_carrera;
 
 }

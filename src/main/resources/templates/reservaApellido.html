@@ -8,20 +8,19 @@
 <body>
 	<div class="container">
 		<h1>Mantenimiento de Reservas</h1>
-			<form action="grabar" method="post" th:object="${reserva}">
+			<form action="/reserva/grabar" method="post" th:object="${reserva}">
 			  <div class="form-group">
 			    <label for="inputCodigo">Código</label>
 			    <input th:field="*{cod_reserva}" type="text" class="form-control" id="inputCodigo" placeholder="ingresar código de reserva">
 			  </div>
 			  <div class="form-group">
 			    <label for="inputNombre">Nombre</label>
-			    <input th:field="*{cod_reserva}" type="text" class="form-control" id="inputNombre" placeholder="ingresar nombres">
+			    <input th:field="*{nom_reserva}" type="text" class="form-control" id="inputNombre" placeholder="ingresar nombres">
 			  </div>
 			  <div class="form-group">
 			    <label for="inputApellido">Apellido</label>
-			    <input th:field="*{cod_reserva}" type="text" class="form-control" id="inputApellido" placeholder="ingresar apellidos">
+			    <input th:field="*{ape_reserva}" type="text" class="form-control" id="inputApellido" placeholder="ingresar apellidos">
 			  </div>
-			  
 			  <div class="form-row">
 			    <div class="form-group col-md-12">
 			      <label for="inputCarrera">Carrera</label>
@@ -34,8 +33,18 @@
 			      </select>
 			    </div>
 			  </div>
+			  <div class="form-group">
+			    <label for="inputFechaReserva">Fecha</label>
+			    <input th:field="*{fecha_reserva}" type="date" class="form-control" id="inputFechaReserva" placeholder="2000-00-00">
+			  </div>
+			  	<br>
 		  		<button type="submit" class="btn btn-primary">Registrar</button>
+		  		<a href="/lista" class="btn btn-primary">Listado</a>
+		  		<a href="/graficoPDF" class="btn btn-primary">PDF</a>
 			</form>
+			<br>
+			<div th:if="${success} != null" class="alert alert-success" role="alert" th:text="${success}"></div>
+			<div th:if="${error} != null" class="alert alert-danger" role="alert" th:text="${error}"></div>
 	</div>
 
 </body>

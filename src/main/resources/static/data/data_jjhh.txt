@@ -15,8 +15,9 @@ Create table tb_reservas(
 cod_reserva		int not null primary key,
 nom_reserva		varchar(40),
 ape_reserva 	varchar(40),
-cod_carrera		int references tb_carreras(cod_carrera),
-fecha_reserva	date
+cod_carrera		int,
+fecha_reserva	date,
+constraint fk_carreras foreign key (cod_carrera) references tb_carreras(cod_carrera)
 );
 
 /*REGISTROS DE CARRERAS*/
@@ -31,5 +32,12 @@ insert into tb_reservas value(3,'Liz','Flores',2,'2022-04-10');
 insert into tb_reservas value(4,'Vania','Huiza',1,'2022-03-15');
 insert into tb_reservas value(5,'Ricardo','Huiza',3,'2022-03-20');
 
+/*CANTIDAD DE RESERVAS POR CARRERA*/
+select c.des_carrera, count(cod_reserva) as cantidad
+from tb_reservas r inner join tb_carreras c 
+on r.cod_carrera = c.cod_carrera
+group by c.des_carrera;
+
+/*CONSULTAS*/
 select * from tb_carreras;
-select * from tb_reservas
+select * from tb_reservas;
